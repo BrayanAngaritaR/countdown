@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+
+@layer components {
+   .bg-home{
+      /* https://img.freepik.com/premium-vector/cute-seamless-dog-pattern-background_616939-26.jpg */
+      /* background-image: url("../../public/img/home-bg.png"); */
+      background: linear-gradient(110deg, #FFD9E8 4%, #FFD9E8 40%, #DE95BA calc(40% + 1px), #DE95BA 50%, #7F4A88 calc(50% + 1px), #7F4A88 70%, #4A266A calc(70% + 1px), #4A266A 100%);
+      background-attachment: fixed;
+      background-size: auto;
+      background-repeat: repeat;
+      background-position: center center;
+      opacity: 0.9;
+   }
+   .timer-circle{
+      @apply flex bg-white bg-opacity-10 rounded-full
+      w-[6.5rem] h-[6.5rem] 
+      md:w-[7.5rem] md:h-[7.5rem]
+      lg:w-[8.5rem] lg:h-[8.5rem]
+   }
+   .timer-circle div{
+      @apply text-white m-auto text-center
+   }
+   .timer-count{
+      @apply block font-bold text-4xl md:text-5xl lg:text-6xl;
+   }
+   .timer-type{
+      @apply block text-sm
+   }
+}

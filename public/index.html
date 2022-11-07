@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="../public/css/tailwind.css" />
+      <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.8/typed.min.js"></script>
+      <title>SoyCoco - Próximamente gran lanzamiento</title>
+   </head>
+   <body class="antialiased font-primary">
+      <div class="bg-home py-10 px-10 w-full min-h-screen">
+         <!-- Content -->
+         <div class="md:max-w-4xl lg:max-w-6xl mx-auto">
+            <!-- Info -->
+            <div class="mt-8 text-white text-center">
+               <h1 class="font-bold text-4xl md:text-5xl">
+                  Soy Coco es perfecto para:
+                  <p class="mt-4">
+                     <span id="typed"></span>
+                  </p>
+               </h1>
+               <p class="pt-4 text-xl md:text-2xl mt-10 mb-10">
+                  Estamos trabajando en una plataforma que tu mascota amará. Regístrate gratuitamente para que te notifiquemos cuando estemos al aire. Faltan:
+               </p>
+            </div>
+            <!-- /Info -->
+
+            <!-- Countdown timer -->
+            <div class="flex flex-wrap justify-center gap-4 my-10 mb-10" x-data="timer()" x-init="countDown()">
+               <!-- Days -->
+               <div class="timer-circle">
+                  <div>
+                     <span class="timer-count" x-text="days"></span>
+                     <span class="timer-type">días</span>
+                  </div>
+               </div>
+               <!-- /Days -->
+               <!-- Hours -->
+               <div class="timer-circle">
+                  <div>
+                     <span class="timer-count" x-text="hours"></span>
+                     <span class="timer-type">horas</span>
+                  </div>
+               </div>
+               <!-- /Hours -->
+               <!-- Minutes -->
+               <div class="timer-circle">
+                  <div>
+                     <span class="timer-count" x-text="minutes"></span>
+                     <span class="timer-type">minutos</span>
+                  </div>
+               </div>
+               <!-- /Minutes -->
+               <!-- Seconds -->
+               <div class="timer-circle">
+                  <div>
+                     <span class="timer-count" x-text="seconds"></span>
+                     <span class="timer-type">segundos</span>
+                  </div>
+               </div>
+               <!-- /Seconds -->
+            </div>
+            <!-- /Countdown timer -->
+
+            <!-- Form -->
+            <form action="" class="mt-8 mx-10">
+               <div class="lg:flex">
+                  <div class="relative w-full lg:w-1/2 lg:mr-2 mb-3 lg:mb-0">
+                     <input type="text" name="name" id="name" placeholder="Nombre completo" class="peer w-full pt-5 pb-3 px-8 rounded-full placeholder-transparent" />
+                     <label for="name" class="absolute text-gray-700 font-bold text-xs left-8 top-2 peer-placeholder-shown:top-2 peer-placeholder-shown:font-normal peer-placeholder-shown:text-base cursor-text">
+                        Nombre completo
+                     </label>
+                  </div>
+
+                  <div class="relative w-full lg:w-1/2 lg:mr-2 mb-3 lg:mb-0">
+                     <input type="email" name="email" id="email" placeholder="Correo electrónico" class="peer w-full pt-5 pb-3 px-8 rounded-full placeholder-transparent" />
+                     <label for="email" class="absolute text-gray-700 font-bold text-xs left-8 top-2 peer-placeholder-shown:top-2 peer-placeholder-shown:font-normal peer-placeholder-shown:text-base cursor-text">
+                        Correo electrónico
+                     </label>
+                  </div>
+               </div>
+               <button type="submit" class="bg-red-800 text-white py-4 px-8 mt-3 w-full rounded-full">
+                  Suscribirme
+               </button>
+               <div class="mt-4 text-white text-center">
+                  <p>Al <b>suscribirte</b> estás aceptando nuestros <a href="#" class="underline">términos y condiciones</a></p>
+               </div>
+            </form>
+            <!-- /Form -->
+         </div>
+         <!-- /Content -->
+      </div>
+
+      <footer class="p-4 bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900">
+         <div class="sm:flex sm:items-center sm:justify-between">
+            <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0">
+               <img src="img/logo.png" class="mr-3 h-11" alt="Soy Coco" />
+            </a>
+            <ul class="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 dark:text-gray-400">
+               <li>
+                  <a href="#" class="mr-4 hover:underline md:mr-6">Nosotros</a>
+               </li>
+               <li>
+                  <a href="#" class="mr-4 hover:underline md:mr-6">Términos y condiciones</a>
+               </li>
+               <li>
+                  <a href="#" class="hover:underline">Contacto</a>
+               </li>
+            </ul>
+         </div>
+         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+         <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 Soy Coco ® | Derechos Reservados</span>
+      </footer>
+
+      <script>
+         function timer() {
+            return {
+               days: "00",
+               hours: "00",
+               minutes: "00",
+               seconds: "00",
+               endTime: new Date("December 26, 2022 23:59:59 GMT-5").getTime(),
+               now: new Date().getTime(),
+               timeLeft: 0,
+               countDown: function () {
+                  let counter = setInterval(() => {
+                     this.now = new Date().getTime();
+                     this.timeLeft = this.format((this.endTime - this.now) / 1000);
+                     this.seconds = this.format(this.timeLeft % 60);
+                     this.minutes = this.format((this.timeLeft / 60) % 60);
+                     this.hours = this.format((this.timeLeft / (60 * 60)) % 24);
+                     this.days = this.format(this.timeLeft / (60 * 60 * 24));
+
+                     //Validate if timeLeft is 0 or negative
+                     if (this.timeLeft <= 0) {
+                        clearInterval(counter);
+                        this.seconds = "00";
+                        this.minutes = "00";
+                        this.hours = "00";
+                        this.days = "00";
+                     }
+                  }, 1000);
+               },
+               format: function (value) {
+                  if (value < 10) {
+                     return "0" + Math.floor(value);
+                  } else return Math.floor(value);
+               },
+            };
+         }
+      </script>
+      <script>
+         new Typed("#typed", {
+            strings: ["Coco Lovers", "Fundaciones", "Adoptar", "Encontrar a mi mascota", "Dueños de mascotas", "Veterinarias"],
+            typeSpeed: 140,
+            delaySpeed: 100,
+            loop: true,
+         });
+      </script>
+   </body>
+</html>
